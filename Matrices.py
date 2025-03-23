@@ -27,7 +27,7 @@ peli_policial3=["La chica del tren","Paula Hawkins","303"]
 peli_policial4=["Los hombres que no amaban a las mujeres","Stieg Larsson","304"]
 peli_policial5=["El silencio de los corderos","Thomas Harris","305"]
 
-#FANTASIA
+#FANTASIAA
 peli_fantasia1=["El Señor de los Anillos","J.R.R. Tolkien","401"]
 peli_fantasia2=["Harry Potter y la piedra filosofal","J.K. Rowling","402"]
 peli_fantasia3=["Crónica del asesino de reyes (El nombre del viento)","Patrick Rothfuss","403"]
