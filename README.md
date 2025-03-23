@@ -1,10 +1,7 @@
 ## TRABAJO PRACTICO GRUPAL DE PROGRAMACIÓN 1 - Prof. Juan Pablo Nardone
 # 🚀 Nombre del Proyecto
 
-![GitHub repo size]([https://img.shields.io/github/repo-size/usuario/repositorio](https://github.com/TpGrupalUADE/ProyectoProgra.git))
-![GitHub contributors]([https://img.shields.io/github/contributors/usuario/repositorio](https://github.com/TpGrupalUADE/ProyectoProgra/graphs/contributors))
-![GitHub license](https://img.shields.io/github/license/usuario/repositorio)
-![GitHub stars](https://img.shields.io/github/stars/usuario/repositorio?style=social)
+Gestión de Biblioteca
 
 📌 **Descripción breve del proyecto**  
 Aquí puedes describir en una línea qué hace tu proyecto y por qué es útil.  
