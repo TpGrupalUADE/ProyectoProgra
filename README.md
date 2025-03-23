@@ -11,22 +11,26 @@ Aquí puedes describir en una línea qué hace tu proyecto y por qué es útil.
 
 ## 📖 Tabla de Contenidos
 1. [Descripción](#descripción)
-2. [Instalación](#instalación)
-3. [Uso](#uso)
-4. [Características](#características)
-5. [Contribución](#contribución)
-6. [Licencia](#licencia)
-7. [Contacto](#contacto)
+2. [Características](#características)
+3. [Contribución](#contribución)
+4. [Contacto](#contacto)
 
 ---
 
 ## 📜 Descripción  
-Explica qué hace tu proyecto, para quién está dirigido y qué problema resuelve.  
+# 🖥️ Proyecto de Programación 1
 
-## ⚙️ Instalación  
-Para usar este proyecto, sigue estos pasos:
+Este repositorio contiene el código y los recursos del proyecto de **Programación 1**. Aquí encontrarás las implementaciones, ejercicios y soluciones desarrolladas a lo largo del curso.  
 
-```bash
-git clone https://github.com/usuario/repositorio.git
-cd repositorio
-npm install
+## 📌 Contenido  
+- Código fuente 📂  
+- Documentación 📖  
+- Ejemplos y prácticas 📝  
+
+## 🚀 Objetivo  
+El objetivo de este proyecto es aplicar los fundamentos de la programación, desarrollando soluciones prácticas y optimizadas.  
+
+## 📄 Tecnologías utilizadas  
+✅ Lenguaje de programación: [Python]  
+✅ Herramientas:[Visual Studio Code]  
+
