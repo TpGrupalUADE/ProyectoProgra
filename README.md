@@ -1,10 +1,6 @@
 ## TRABAJO PRACTICO GRUPAL DE PROGRAMACIÓN 1 - Prof. Juan Pablo Nardone
 # 🚀 Nombre del Proyecto
 
-Gestión de Biblioteca
-
-📌 **Descripción breve del proyecto**  
-Aquí puedes describir en una línea qué hace tu proyecto y por qué es útil.  
 
 ## 📖 Tabla de Contenidos
 1. [Descripción](#descripción)
