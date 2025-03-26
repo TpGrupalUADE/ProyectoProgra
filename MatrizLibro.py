@@ -28,11 +28,12 @@ matriz = [
     ["Alicia en el país de las maravillas", "Lewis Carroll", "405"]
 ]
 
+#El max_len calcula los espacios entre dato y otro para obtener la misma separación.
 max_len = max(len(str(num)) for fila in matriz for num in fila)
 
 #Mostrar la matriz
 for fila in matriz:
     for elemento in fila:
         # Formatear cada elemento con el tamaño adecuado
-        print(f"{elemento:{max_len}}", end=" ")                     #El max_len calcula los espacios entre dato y otro para obtener la misma separación.
+        print(f"{elemento:{max_len}}", end=" ")                     
     print()  # Salto de línea después de cada fila
