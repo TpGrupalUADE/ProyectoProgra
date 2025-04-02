@@ -17,6 +17,7 @@ def menu():
     print("5. Listar libros")
     print("0. Salir")
     print("=" * 30)
+<<<<<<< HEAD
 def validContraseña(contraseña_user):
     if len(contraseña_user) < 8:
         return False
@@ -26,6 +27,9 @@ menu_login()
 
 matrizBibliotecaUsuarios = MatrizUsuarios.biblioteca_usuarios
 
+=======
+menu( )
+>>>>>>> 33e8d29b77fabc257db5e04a380b4cb1f883b90c
 opcion = int(input("Ingrese su opción: "))
 while opcion < 0 or opcion > 5:
     print("Opción inválida. Por favor, elija una opción válida.")
