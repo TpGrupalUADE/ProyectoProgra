@@ -1,5 +1,6 @@
 #FILAS DE LIBROS (NOMBRE / AUTOR / ID):
-inventario_libro = [
+# Crear una matriz 2x3 con los datos
+libros = [
     ["IT", "Sthepen King", "001"],
     ["El exorcista", "William Peter Blatty", "002"],
     ["Drácula", "Bram Stoker", "003"],
@@ -27,16 +28,11 @@ inventario_libro = [
     ["Alicia en el país de las maravillas", "Lewis Carroll", "405"]
 ]
 
-# Calcular el ancho máximo de cada columna
-ancho_columna = [max(len(str(fila[i])) for fila in inventario_libro) for i in range(len(inventario_libro[0]))]
-""" 
-# Imprimir la matriz con formato
-print("Matriz de Libros:")
-print("=" * (sum(ancho_columna) + len(ancho_columna) * 3 - 1))  # Línea separadora
-for fila in inventario_libro:
-    for i, elemento in enumerate(fila):
-        # Formatear cada elemento con el ancho de columna adecuado
-        print(f"{str(elemento):<{ancho_columna[i]}}", end=" | ")
+max_len = max(len(str(num)) for fila in libros for num in fila)
+
+#Mostrar la matriz libros
+for fila in libros:
+    for elemento in fila:
+        # Formatear cada elemento con el tamaño adecuado
+        print(f"{elemento:{max_len}}", end=" ")                     #El max_len calcula los espacios entre dato y otro para obtener la misma separación.
     print()  # Salto de línea después de cada fila
-print("=" * (sum(ancho_columna) + len(ancho_columna) * 3 - 1))  # Línea separadora
-"""
