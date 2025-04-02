@@ -13,7 +13,7 @@ def menu():
     print("5. Listar libros")
     print("0. Salir")
     print("=" * 30)
-menu()
+menu( )
 opcion = int(input("Ingrese su opción: "))
 while opcion < 0 or opcion > 5:
     print("Opción inválida. Por favor, elija una opción válida.")
