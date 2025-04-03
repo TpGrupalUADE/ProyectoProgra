@@ -72,13 +72,13 @@ def sub_menuLibros():
     print("0. Retroceder")
     print("=" * 30)
 
-# Muestra el menú de inicio de sesión
-menu_login()
-
 # Importa la matriz de usuarios y la almacena en una variable
 matrizBibliotecaUsuarios = MatrizUsuarios.biblioteca_usuarios
 # Importa la matriz de libros y la almacena en una variable
 matrizLibros = MatrizLibro.libros
+
+# Muestra el menú de inicio de sesión
+menu_login()
 
 opcion = int(input("Ingrese su opción: "))
 while opcion != 0:
@@ -169,21 +169,6 @@ while opcion != 0:
     else:
         print("Opción inválida. Por favor, elija una opción válida.")
 
-    menu_login()
-    opcion = int(input("Ingrese su opción: "))
+    opcion = int(input("\nPara salir presione '0': "))
 
 print("Saliendo del programa...")
-
-    
-"""         
-    elif opcion in [2, 3, 4, 5]:
-        print(f"Has seleccionado la opción {opcion}.")
-        # Agregar la lógica para las opciones 2, 3, 4 y 5
-    else:
-        print("Opción inválida. Por favor, elija una opción válida.")
-
-    opcion = int(input("Ingrese su opción: "))
-    while opcion < 0 or opcion > 5:
-        print("Opción inválida. Por favor, elija una opción válida.")
-        opcion = int(input("Ingrese su opción: "))
-"""
