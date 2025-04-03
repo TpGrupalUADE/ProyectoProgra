@@ -5,18 +5,14 @@ libros = [
     ["El exorcista", "William Peter Blatty", "002"],
     ["Drácula", "Bram Stoker", "003"],
     ["El resplandor", "Stephen King", "004"],
-    ["Frankenstein", "Mary Shelley", "005"],
-    ["El silencio de los corderos", "Thomas Harris", "305"],
     ["Orgullo y prejuicio", "Jane Austen", "101"],
     ["Bajo la Misma Estrella", "John Green", "102"],
     ["Cumbres borrascosas", "Emily Brontë", "103"],
     ["Posdata: Te amo", "Cecelia Ahern", "104"],
-    ["Un paseo para recordar", "Nicholas Sparks", "105"],
     ["Los juegos del hambre", "Suzanne Collins", "201"],
     ["La isla del tesoro", "Robert Louis Stevenson", "202"],
     ["El Código Da Vinci", "Dan Brown", "203"],
     ["Jurassic Park", "Michael Crichton", "204"],
-    ["Misión Imposible", "Bruce Geller", "205"],
     ["Asesinato en el Orient Express", "Agatha Christie", "301"],
     ["El Sabueso de los Baskerville", "Arthur Conan Doyle", "302"],
     ["La chica del tren", "Paula Hawkins", "303"],
@@ -24,15 +20,5 @@ libros = [
     ["El Señor de los Anillos", "J.R.R. Tolkien", "401"],
     ["Harry Potter y la piedra filosofal", "J.K. Rowling", "402"],
     ["Crónica del asesino de reyes (El nombre del viento)", "Patrick Rothfuss", "403"],
-    ["Juego de tronos", "George R.R. Martin", "404"],
-    ["Alicia en el país de las maravillas", "Lewis Carroll", "405"]
+    ["Juego de tronos", "George R.R. Martin", "404"]
 ]
-
-max_len = max(len(str(num)) for fila in libros for num in fila)
-
-#Mostrar la matriz libros
-for fila in libros:
-    for elemento in fila:
-        # Formatear cada elemento con el tamaño adecuado
-        print(f"{elemento:{max_len}}", end=" ")                     #El max_len calcula los espacios entre dato y otro para obtener la misma separación.
-    print()  # Salto de línea después de cada fila
