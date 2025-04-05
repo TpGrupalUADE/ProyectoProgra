@@ -1,27 +1,18 @@
 import MatrizLibro
 import MatrizUsuarios
 
-def menu_Busqueda():
-    print("=" * 30)
-    print("1. Buscar libro por autor")
-    print("2. Buscar libro por nombre")
-    print("3. Buscar libro por ID")
-    print("0. Retroceder")
-    print("=" * 30)
 
 def menu_login():
-    # Menú de inicio de sesión
     print("=" * 30)
     print("¡Bienvenidos a nuestra Biblioteca!".center(30))
     print("Seleccione: ")
     print("1. Crear cuenta")
     print("2. Iniciar sesión")
-    print("0. Salir")
     print("=" * 30)
 
 def menu():
-    # Menú de opciones
     print("=" * 30)
+    print("Por favor, elija una opción:")
     print("1. Búsqueda de libro")
     print("2. Dar de alta un libro")
     print("3. Dar de baja un libro")
@@ -30,145 +21,128 @@ def menu():
     print("0. Salir")
     print("=" * 30)
 
-def usuario_existe(nombre_user, matriz):
-    # Verifica si el usuario ya existe en la matriz
-    for fila in matriz:
-        if fila[0] == nombre_user:  # Compara con el primer elemento de cada fila (nombre de usuario)
-            return True
-    return False
-
 def validContraseña(contraseña_user):
-    # Verificar si tiene al menos 8 caracteres
-    if len(contraseña_user) < 8:
-        return 0
-
-    # Verificar si tiene al menos una letra mayúscula
     tiene_mayuscula = False
-    for letra in contraseña_user:
-        if letra.isupper():
+    tiene_numero = False
+    tiene_especial = False
+
+    especiales = "!@#$%^&*(),.?\":{}|<>_-+="
+
+    errores = []
+
+    if len(contraseña_user) < 8:
+        errores.append("Debe tener al menos 8 caracteres.")
+
+    for caracter in contraseña_user:
+        if caracter.isupper():
             tiene_mayuscula = True
-            break
+        if caracter.isdigit():
+            tiene_numero = True
+        if caracter in especiales:
+            tiene_especial = True
+
     if not tiene_mayuscula:
-        return 1
+        errores.append("Debe contener al menos una letra mayúscula.")
+    if not tiene_numero:
+        errores.append("Debe contener al menos un número.")
+    if not tiene_especial:
+        errores.append("Debe contener al menos un carácter especial.")
 
-    # Verificar si tiene al menos un carácter especial
-    caracteres_especiales = "!@#$%^&*()-_=+[]{}|;:'\",.<>?/\\"  # Lista de caracteres especiales permitidos
-    tiene_caracter_especial = False
-    for char in contraseña_user:
-        if char in caracteres_especiales:
-            tiene_caracter_especial = True
-            break
-    if not tiene_caracter_especial:
-        return 2
+    if errores:
+        print("Contraseña inválida:")
+        for error in errores:
+            print(f"- {error}")
+        return False
 
-    # Si pasa todas las verificaciones, es válida
     return True
 
-def sub_menuLibros():
-    print("=" * 30)
-    print("1. Buscar libro por autor")
-    print("2. Buscar libro por nombre")
-    print("3. Buscar libro por ID")
-    print("0. Retroceder")
-    print("=" * 30)
+def iniciar_sesion(matrizUsuarios):
+    nombre = input("Nombre de usuario: ")
+    contraseña = input("Contraseña: ")
 
-# Importa la matriz de usuarios y la almacena en una variable
+    encontrado = False
+    for usuario in matrizUsuarios:
+        if usuario[0] == nombre:
+            encontrado = True
+            if usuario[3] == contraseña:
+                print(f"✅ ¡Bienvenido/a {nombre}!")
+                return True
+            else:
+                print("❌ Contraseña incorrecta.")
+                return False
+    if not encontrado:
+        print("❌ Usuario no encontrado.")
+    return False
+
+
 matrizBibliotecaUsuarios = MatrizUsuarios.biblioteca_usuarios
-# Importa la matriz de libros y la almacena en una variable
-matrizLibros = MatrizLibro.libros
 
-# Muestra el menú de inicio de sesión
 menu_login()
 
 opcion = int(input("Ingrese su opción: "))
+while opcion < 0 or opcion > 5:
+    print("Opción inválida. Por favor, elija una opción válida.")
+    opcion = int(input("Ingrese su opción: "))
+
 while opcion != 0:
-    if opcion == 1:  # Crear cuenta
-        while True:
-            nombre_user = input("Ingresar Nombre de Usuario o '0' para salir: ")
-            if nombre_user == "0":
-                print("Saliendo del programa...")
-                exit()
-
-            # Verificar si el usuario ya existe
-            if usuario_existe(nombre_user, matrizBibliotecaUsuarios):
-                print("El usuario ya existe. Intente con otro nombre.")
-            else:
-                print("Usuario disponible.")
-                break
-
-        # Contraseña debe tener mínimo 8 caracteres; 1 mayúscula; 1 carácter especial.
-        while True:
-            contraseña_user = input("Ingresar Contraseña o '0' para salir: ")
-            if contraseña_user == "0":
-                print("Saliendo del programa...")
-                exit()
-
-            validacion = validContraseña(contraseña_user)
-            if validacion == 0:
-                print("La contraseña debe tener al menos 8 caracteres.")
-            elif validacion == 1:
-                print("La contraseña debe tener al menos una letra mayúscula.")
-            elif validacion == 2:
-                print("La contraseña debe tener al menos un carácter especial.")
-            else:
-                break  # Contraseña válida, salir del bucle
-
-        # Agregar el usuario a la matriz
-        nuevo_id = matrizBibliotecaUsuarios[-1][1] + 1
-        matrizBibliotecaUsuarios.append([nombre_user, nuevo_id, nombre_user + "@biblio.edu.ar", contraseña_user])
-        print("Usuario agregado exitosamente.")
-
-    elif opcion == 2:  # Iniciar sesión
+    if opcion == 1:
         nombre_user = input("Ingresar Nombre de Usuario: ")
+        
         contraseña_user = input("Ingresar Contraseña: ")
+        while not validContraseña(contraseña_user):
+            contraseña_user = input("Ingresar contraseña válida: ")
 
-        # Verificar si el usuario existe y si la contraseña es correcta
-        usuario_encontrado = False
-        for fila in matrizBibliotecaUsuarios:
-            if fila[0] == nombre_user and fila[3] == contraseña_user:
-                usuario_encontrado = True
-                print(f"Hola {nombre_user}, un gusto verte de nuevo!")
-                menu()
-                opcion = int(input("Ingrese su opción: "))
-                if opcion == 1:
-                    menu_Busqueda()
-                    sub_opcion = int(input("Ingrese su opción: "))
-                    if sub_opcion == 1:
-                        print("Buscando libro por autor...")
-                    elif sub_opcion == 2:
-                        print("Buscando libro por nombre...")
-                    elif sub_opcion == 3:
-                        print("Buscando libro por ID...")
-                    elif sub_opcion == 0:
-                        print("Regresando al menú principal...")
-                    else:
-                        print("Opción inválida. Por favor, elija una opción válida.")
-                elif opcion == 2:
-                    print("Dar de alta un libro...")
-                elif opcion == 3:
-                    print("Dar de baja un libro...")
-                elif opcion == 4:
-                    print("Modificar libro...")
-                elif opcion == 5:
-                    print("Listando libros...")
-                    max_len = max(len(str(num)) for fila in matrizLibros for num in fila)
-                    for fila in matrizLibros:
-                        for elemento in fila:
-                            print(f"{elemento:{max_len}}", end=" ")
-                        print()
-                elif opcion == 0:
-                    print("Saliendo del programa...")
-                    exit()
-                else:
-                    print("Opción inválida. Por favor, elija una opción válida.")
-                break
+        nuevo_id = matrizBibliotecaUsuarios[-1][1] + 1
+        nuevo_email = nombre_user + "@biblio.edu.ar"
 
-        if not usuario_encontrado:
-            print("Nombre de usuario o contraseña incorrectos.")
+        matrizBibliotecaUsuarios.append([nombre_user, nuevo_id, nuevo_email, contraseña_user])
+        print("✅ Cuenta creada con éxito:")
+        print(f"Usuario: {nombre_user} | Email: {nuevo_email}")
 
+    elif opcion == 2:
+        iniciar_sesion(matrizBibliotecaUsuarios)
+
+    opcion = int(input("\nIngrese otra opción o 0 para salir: "))
+
+"""
+    elif opcion == 2:
+        nombre_user = 
+        if opcion == 1:
+        print("=" * 30)
+        print("1. Buscar libro por autor")
+        print("2. Buscar libro por nombre")
+        print("3. Buscar libro por ID")
+        print("0. Retroceder")
+        print("=" * 30)
+        sub_opcion = int(input("Ingrese su opción: "))
+        if sub_opcion == 1:
+            print("Buscando libro por autor...")
+            # Agregar la lógica para buscar por autor
+        elif sub_opcion == 2:
+            print("Buscando libro por nombre...")
+            # Agregar la lógica para buscar por nombre
+        elif sub_opcion == 3:
+            print("Buscando libro por ID...")
+            # Agregar la lógica para buscar por ID
+        elif sub_opcion == 0:
+            print("Regresando al menú principal...")
+            menu()
+        else:
+            print("Opción inválida. Por favor, elija una opción válida.")
+    elif opcion == 2:
+        print("=" * 30)
+        
+        print("=" * 30)
+    elif opcion in [2, 3, 4, 5]:
+        print(f"Has seleccionado la opción {opcion}.")
+        # Agregar la lógica para las opciones 2, 3, 4 y 5
     else:
         print("Opción inválida. Por favor, elija una opción válida.")
 
-    opcion = int(input("\nPara salir presione '0': "))
+    opcion = int(input("Ingrese su opción: "))
+    while opcion < 0 or opcion > 5:
+        print("Opción inválida. Por favor, elija una opción válida.")
+        opcion = int(input("Ingrese su opción: "))
 
-print("Saliendo del programa...")
+        """
+
