@@ -1,7 +1,6 @@
 import MatrizLibro
 import MatrizUsuarios
 
-
 def menu_login():
     print("=" * 30)
     print("¡Bienvenidos a nuestra Biblioteca!".center(30))
@@ -102,18 +101,16 @@ while opcion != 0:
     elif opcion == 2:
         iniciar_sesion(matrizBibliotecaUsuarios)
 
-    opcion = int(input("\nIngrese otra opción o 0 para salir: "))
+#Cerrar bucle de inicio de sesion!!!
 
-"""
-    elif opcion == 2:
-        nombre_user = 
+        #nombre_user = 
         if opcion == 1:
-        print("=" * 30)
-        print("1. Buscar libro por autor")
-        print("2. Buscar libro por nombre")
-        print("3. Buscar libro por ID")
-        print("0. Retroceder")
-        print("=" * 30)
+            print("=" * 30)
+            print("1. Buscar libro por autor")
+            print("2. Buscar libro por nombre")
+            print("3. Buscar libro por ID")
+            print("0. Retroceder")
+            print("=" * 30)
         sub_opcion = int(input("Ingrese su opción: "))
         if sub_opcion == 1:
             print("Buscando libro por autor...")
@@ -143,6 +140,6 @@ while opcion != 0:
     while opcion < 0 or opcion > 5:
         print("Opción inválida. Por favor, elija una opción válida.")
         opcion = int(input("Ingrese su opción: "))
+    opcion = int(input("\nIngrese otra opción o 0 para salir: "))
 
-        """
-
+    
