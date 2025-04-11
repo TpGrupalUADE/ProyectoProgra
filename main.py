@@ -1,82 +1,148 @@
-import MatrizLibro
-import MatrizSocios
-import login
-import MatrizAdmin
+import MatrizLibro, MatrizSocios, login, MatrizAdmin, funcionalidades
 
 matrizBibliotecaSocios = MatrizSocios.biblioteca_usuarios
 
-login.menu_login()
+login.inicio()
 
-
-print("prueba")
 opcion = int(input("Ingrese su opción: "))
-while opcion < 0 or opcion > 5:
+while opcion < 0 or opcion > 3:
     print("Opción inválida. Por favor, elija una opción válida.")
     opcion = int(input("Ingrese su opción: "))
 
-while opcion != 0:
+bandera = True
+while bandera:
     if opcion == 1:
         nombre_user = input("Ingresar Nombre de Usuario: ")
         
         contraseña_user = input("Ingresar Contraseña: ")
-        while not login.validContraseña(contraseña_user):
+        while not funcionalidades.validContraseña(contraseña_user):
             contraseña_user = input("Ingresar contraseña válida: ")
 
-        nuevo_id = matrizBibliotecaSocios[-1][1] + 1
-        nuevo_email = nombre_user + "@biblio.edu.ar"
+        funcionalidades.darDeAltaSocio(nombre_user, contraseña_user, matrizBibliotecaSocios)
 
-        matrizBibliotecaSocios.append([nombre_user, nuevo_id, nuevo_email, contraseña_user])
-        print("✅ Cuenta creada con éxito:")
-        print(f"Usuario: {nombre_user} | Email: {nuevo_email}")
+        #ACA HAY UN BUG PORQUE NUNCA SE ROMPE EL WHILE HASTA QUE PONGA BANDERA = FALSE
+        #ENTONCES UNA VEZ TERMINADA LA CREACIÓN DE LA CUENTA, SE PREGUNTA SI QUIERE HACER ALGO MÁS
+        #PERO NO HAY OPCIÓN PARA HACER ALGO MÁS, SOLO SE PUEDE SALIR DEL PROGRAMA
 
     elif opcion == 2:
-        if login.iniciar_sesion(matrizBibliotecaSocios):
+        if funcionalidades.iniciar_sesion(matrizBibliotecaSocios):
 
-#Cerrar bucle de inicio de sesion!!!
+            login.menu_socio()
+            variable = int(input("Ingrese su opción: "))
 
-            login.menu()
-            if opcion == 1:
-                print("=" * 30)
-                print("1. Buscar libro por autor")
-                print("2. Buscar libro por nombre")
-                print("3. Buscar libro por ID")
-                print("0. Retroceder")
-                print("=" * 30)
+
+            if variable == 1:
+                
+                login.sub_menuSocio()
                 sub_opcion = int(input("Ingrese su opción: "))
+
+                #bandera = False para salir del programa después de hacer la búsqueda
+
                 if sub_opcion == 1:
-                    print("Buscando libro por autor...")
-                # Agregar la lógica para buscar por autor
+                    nombre_autor = input("Ingrese el nombre del autor a buscar: ")
+                    #Llamo a la función de búsqueda por autor
+                    funcionalidades.busquedaLibroAutor(MatrizLibro.libros, nombre_autor)
+                    bandera = False
                 elif sub_opcion == 2:
-                    print("Buscando libro por nombre...")
-                # Agregar la lógica para buscar por nombre
+                    nombre_libro = input("Ingrese el nombre del libro a buscar: ")
+                    #Llamo a la función de búsqueda por nombre
+                    funcionalidades.busquedaLibroNombre(MatrizLibro.libros, nombre_libro)
+                    bandera = False
                 elif sub_opcion == 3:
-                    print("Buscando libro por ID...")
-                # Agregar la lógica para buscar por ID
-                elif sub_opcion == 0:
-                    print("Regresando al menú principal...")
-                else:
-                    print("Opción inválida. Por favor, elija una opción válida.")
+                    id_libro = input("Ingrese el ID del libro a buscar: ")
+                    #Llamo a la función de búsqueda por ID
+                    funcionalidades.busquedaLibroID(MatrizLibro.libros, id_libro)
+                    bandera = False
+
+
+            elif variable == 2:
+                print(MatrizLibro.libros)
+                bandera = False
+            elif variable == 0:
+                bandera = False
 
     elif opcion == 3:
-        login.iniciar_sesion(MatrizAdmin)
+        if login.iniciar_sesion(MatrizAdmin.matriz_admin):
+            login.menuAdmin()
+            #Ingreso opción para el sub menú del ADMINISTRADOR (no importa que se repita la variable opción)
+            opcion = int(input("Ingrese su opción: "))
 
-        login.menuAdmin()
+            if opcion == 1:
 
-    """elif opcion == 2:
-        print("=" * 30)
-        
-        print("=" * 30)
-    elif opcion in [2, 3, 4, 5]:
-        print(f"Has seleccionado la opción {opcion}.")
-        # Agregar la lógica para las opciones 2, 3, 4 y 5
-    else:
-        print("Opción inválida. Por favor, elija una opción válida.")
+                #Buscar un libro
 
-    opcion = int(input("Ingrese su opción: "))
-    while opcion < 0 or opcion > 5:
-        print("Opción inválida. Por favor, elija una opción válida.")
-        opcion = int(input("Ingrese su opción: "))
-    opcion = int(input("\nIngrese otra opción o 0 para salir: "))"""
-    
+                login.sub_menuSocio()
+                sub_opcion = int(input("Ingrese su opción: "))
 
-    
+                #bandera = False para salir del programa después de hacer la búsqueda
+
+                if sub_opcion == 1:
+                    nombre_autor = input("Ingrese el nombre del autor a buscar: ")
+                    #Llamo a la función de búsqueda por autor
+                    funcionalidades.busquedaLibroAutor(MatrizLibro.libros, nombre_autor)
+                    bandera = False
+                elif sub_opcion == 2:
+                    nombre_libro = input("Ingrese el nombre del libro a buscar: ")
+                    #Llamo a la función de búsqueda por nombre
+                    funcionalidades.busquedaLibroNombre(MatrizLibro.libros, nombre_libro)
+                    bandera = False
+                elif sub_opcion == 3:
+                    id_libro = input("Ingrese el ID del libro a buscar: ")
+                    #Llamo a la función de búsqueda por ID
+                    funcionalidades.busquedaLibroID(MatrizLibro.libros, id_libro)
+                    bandera = False
+
+            elif opcion == 2:
+                
+                #Dar de alta un libro
+
+                nombre_libro = input("Ingrese el nombre del libro: ")
+                #Si el libro no existe en la matriz, no se puede agregar
+                if funcionalidades.chequearLibroRepite(MatrizLibro.libros, nombre_libro) == False:
+                    nombre_autor = input("Ingrese el autor del libro: ")
+                    MatrizLibro.libros.append([nombre_libro, nombre_autor, len(MatrizLibro.libros) + 1])
+                else:
+                    print("El libro ya existe en la biblioteca.")
+
+            elif opcion == 3:
+
+                #Dar de baja un libro
+                #Usar .remove() o .pop() para eliminar el libro de la matriz
+                #Dar de baja por nombre del libro
+                nombre_libro = input("Ingrese nombre del libro a dar de baja: ")
+
+            elif opcion == 4:
+
+                #Modificar un libro
+                #Preguntar nombre del libro a modificar
+
+                nombre_libro = input("Ingrese nombre del libro a modificar")
+
+            elif opcion == 5:
+
+                #Listar libros
+
+                print(MatrizLibro.libros)
+            
+            elif opcion == 6:
+
+                #Dar de alta un socio
+                nombre_user = input("Ingresar Nombre de Usuario: ")
+                contraseña_user = input("Ingresar Contraseña: ")
+
+                while not login.validContraseña(contraseña_user):
+                    contraseña_user = input("Ingresar contraseña válida: ")
+
+                funcionalidades.darDeAltaSocio(nombre_user, contraseña_user, matrizBibliotecaSocios)
+
+                print("✅ Cuenta creada con éxito:")
+                print(f"Usuario: {nombre_user} | Email: {nombre_user+ "@biblio.edu.ar"}")
+
+            elif opcion == 7:
+
+                #Dar de baja un socio
+                #Preguntar numero de legajo para eliminar de matriz
+                legajo = int(input("Ingrese el número de legajo del socio a eliminar: "))
+
+            elif opcion == 0:
+                bandera = False

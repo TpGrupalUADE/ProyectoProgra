@@ -22,3 +22,4 @@ libros = [
     ["Crónica del asesino de reyes (El nombre del viento)", "Patrick Rothfuss", "403"],
     ["Juego de tronos", "George R.R. Martin", "404"]
 ]
+#FORMATO MATRIZ -> [Nombre, Autor, ID] -> [0, 1, 2]
