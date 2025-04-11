@@ -7,6 +7,8 @@ matrizBibliotecaSocios = MatrizSocios.biblioteca_usuarios
 
 login.menu_login()
 
+
+print("prueba")
 opcion = int(input("Ingrese su opción: "))
 while opcion < 0 or opcion > 5:
     print("Opción inválida. Por favor, elija una opción válida.")

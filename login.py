@@ -5,18 +5,31 @@ def menu_login():
     print("Seleccione: ")
     print("1. Crear cuenta")
     print("2. Iniciar sesión")
+    print("3. Ingresar como Admin")
     print("=" * 30)
 
 def menu():
     print("=" * 30)
-    print("Por favor, elija una opción:")
+    print("1. Búsqueda de libro")
+    print("2. Listar libros")
+    print("0. Salir")
+    print("=" * 30)
+    opcion=int(input("Elija una opcion: "))
+    return opcion
+
+def menuAdmin():
+    print("=" * 30)
     print("1. Búsqueda de libro")
     print("2. Dar de alta un libro")
     print("3. Dar de baja un libro")
     print("4. Modificar libro")
     print("5. Listar libros")
+    print("6. Dar de alta un socio")
+    print("7. Dar de baja un socio")
     print("0. Salir")
     print("=" * 30)
+    opcion= int(("Por favor, elija una opción:"))
+    return opcion
 
 def validContraseña(contraseña_user):
     tiene_mayuscula = False
