@@ -1,7 +1,7 @@
 #FILAS DE LIBROS (NOMBRE / AUTOR / ID):
 # Crear una matriz 2x3 con los datos
 libros = [
-    ["IT", "Sthepen King", "001"],
+    ["IT", "Stephen King", "001"],
     ["El exorcista", "William Peter Blatty", "002"],
     ["Drácula", "Bram Stoker", "003"],
     ["El resplandor", "Stephen King", "004"],
