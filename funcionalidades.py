@@ -26,19 +26,6 @@ def busquedaLibroNombre(matriz, nombre_libro):
     else:
         print("No se encontraron libros con ese nombre.")
 
-def busquedaLibroNombre(matriz, nombre_libro):
-    print(f"Buscando libro: {nombre_libro}")
-    libros_encontrados = []
-    for libro in matriz:
-        if libro[0].lower() == nombre_libro.lower():  # Comparar ignorando mayúsculas/minúsculas
-            libros_encontrados.append(libro)
-    if libros_encontrados:
-        print("Libros encontrados:")
-        for libro in libros_encontrados:
-            print(f"- {libro[0]} (Autor: {libro[1]}, ID: {libro[2]})")  # Mostrar nombre, autor e ID del libro
-    else:
-        print("No se encontraron libros con ese nombre.")
-
 def busquedaLibroID(matriz, id_libro):
     print(f"Buscando libro con ID: {id_libro}")
     libros_encontrados = []
@@ -60,12 +47,15 @@ def chequearLibroRepite(matriz, libro):
     return False
 
 def darDeAltaSocio (nombre_usuario, contrasena, matriz_usuario):
-    nuevo_id = matriz_usuario[-1][1] + 1
+    nuevo_id = matriz_usuario[-1][1] + 1                                #Le asigna a "nuevo_id" el ID del último usuario + 1
     nuevo_email = nombre_usuario + "@biblio.edu.ar"
 
-    matriz_usuario.append([nombre_usuario, nuevo_id, nuevo_email, contrasena])
+    matriz_usuario.append([nombre_usuario, nuevo_id, nuevo_email, contrasena]) #Agrega el nuevo usuario a la matriz de usuarios
     print("✅ Cuenta creada con éxito:")
-    print(f"Usuario: {nombre_usuario} | Email: {nombre_usuario+ "@biblio.edu.ar"}")
+    print(f"Usuario: {nombre_usuario} | Email: {nombre_usuario+ '@biblio.edu.ar'}") #Muestra el usuario y el email del nuevo usuario creado
+
+#def darDeBajaSocio(id, matriz_usuario):
+
 
 def validContraseña(contraseña_user):
     tiene_mayuscula = False
@@ -79,15 +69,15 @@ def validContraseña(contraseña_user):
     if len(contraseña_user) < 8:
         errores.append("Debe tener al menos 8 caracteres.")
 
-    for caracter in contraseña_user:
-        if caracter.isupper():
+    for caracter in contraseña_user:        #Recorre cada caracter de la contraseña, chequeando que tenga cada característica solicitada
+        if caracter.isupper():              #Chequea si tiene mayúscula
             tiene_mayuscula = True
-        if caracter.isdigit():
+        if caracter.isdigit():              #Chequea si tiene número
             tiene_numero = True
-        if caracter in especiales:
+        if caracter in especiales:          #Chequea si tiene carácter especial
             tiene_especial = True
 
-    if not tiene_mayuscula:
+    if not tiene_mayuscula:                 #En caso de no tener alguna de las características, se agrega a la lista de errores
         errores.append("Debe contener al menos una letra mayúscula.")
     if not tiene_numero:
         errores.append("Debe contener al menos un número.")

@@ -136,7 +136,7 @@ while bandera:
                 funcionalidades.darDeAltaSocio(nombre_user, contraseña_user, matrizBibliotecaSocios)
 
                 print("✅ Cuenta creada con éxito:")
-                print(f"Usuario: {nombre_user} | Email: {nombre_user+ "@biblio.edu.ar"}")
+                print(f"Usuario: {nombre_user} | Email: {nombre_user+ '@biblio.edu.ar'}")
 
             elif opcion == 7:
 
