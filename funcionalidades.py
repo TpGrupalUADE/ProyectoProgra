@@ -23,8 +23,10 @@ def busquedaLibroNombre(matriz, nombre_libro):
         print("Libros encontrados:")
         for libro in libros_encontrados:
             print(f"- {libro[0]} (ID: {libro[2]})")  # Mostrar nombre del libro y su ID
+            return 1
     else:
         print("No se encontraron libros con ese nombre.")
+        return 0
 
 def busquedaLibroID(matriz, id_libro):
     print(f"Buscando libro con ID: {id_libro}")
@@ -109,3 +111,36 @@ def iniciar_sesion(matriz):
     if not encontrado:
         print("❌ Usuario no encontrado.")
     return False
+
+def retroceder_menu():
+    print("Desea seguir operando?")
+    print("1. Si")
+    print("2. No")
+    operando = int(input("Ingrese su opción: "))
+    # Manejo de errores
+    while operando < 1 or operando > 2:
+        print("Opción inválida. Intente nuevamente.")
+        operando = int(input("Ingrese su opción: "))
+    if operando == 2:
+        print("Cerrando programa...")
+        """bandera = False
+        bandera_back = False"""
+        return False, False 
+    else:
+        print("Regresando al menú principal...")
+        return False, True
+
+def recorrer_matriz(matriz):
+    # Usar lambda para recorrer e imprimir cada fila
+    list(map(lambda fila: print(f"Fila: {fila}"), matriz))
+
+    """# Usar lambda para recorrer e imprimir cada elemento
+    list(map(lambda fila: list(map(lambda elemento: print(f"Elemento: {elemento}"), fila)), matriz))"""
+    
+
+"""    for i in range(len(matriz)):
+        print(f"Fila {i}: {matriz[i]}")
+
+    for i in range(len(matriz)):
+        for j in range(len(matriz[i])):
+            print(f"Elemento en la fila {i}, columna {j}: {matriz[i][j]}")"""
